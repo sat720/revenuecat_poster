@@ -61,7 +61,7 @@ Qwen-Workspace1/
 
 - **GitHub**: [sat720](https://github.com/sat720/)
 - **LinkedIn**: [Satvik Kolluru](https://www.linkedin.com/in/satvik-kolluru-02548a208)
-
+- **Vercel Link**: (https://revenuecat-poster.vercel.app/)
 ---
 
 ## ⭐ Support

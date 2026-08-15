@@ -79,13 +79,13 @@ const InputForm = ({ onSubmit }) => {
           ) : (
             <div style={{ textAlign: "center" }}>
               <img
-                src="/images/qwen-camera-bear.jpeg"
+                src="/images/shippy-rocket-triangle.webp"
                 alt="Upload"
                 className="drop-zone-bear"
               />
 
               <p style={{ marginTop: "12px" }}>
-                ✨ Drag & Drop your photo here
+                🚀 Drag & Drop your photo here
               </p>
 
               <p
@@ -96,7 +96,7 @@ const InputForm = ({ onSubmit }) => {
                 }}
               >
                 Click or drag an image to generate your
-                <strong> Qwen Workspace Attendee Pass</strong>
+                <strong> Shipathon 2026 Attendee Pass</strong>
               </p>
             </div>
           )}
@@ -113,14 +113,14 @@ const InputForm = ({ onSubmit }) => {
 
       {/* Name */}
       <div className="form-group">
-        <label>Name</label>
+        <label>Name (Max 14 chars)</label>
 
         <input
           className="form-input"
           type="text"
-          placeholder="Enter your full name"
+          placeholder="Enter your name"
           value={name}
-          maxLength={40}
+          maxLength={14}
           onChange={(e) => setName(e.target.value)}
           required
         />
@@ -128,14 +128,14 @@ const InputForm = ({ onSubmit }) => {
 
       {/* Role */}
       <div className="form-group">
-        <label>Company / Designation (Optional)</label>
+        <label>Company / Designation (Optional, Max 14 chars)</label>
 
         <input
           className="form-input"
           type="text"
-          placeholder="e.g. AI/ML Engineer"
+          placeholder="e.g. AI Engineer"
           value={role}
-          maxLength={40}
+          maxLength={14}
           onChange={(e) => setRole(e.target.value)}
         />
       </div>

@@ -12,19 +12,26 @@ export const generateTicketCanvas = async (name, role, photoFile) => {
       const TEMPLATE_URL = "/template.png";
 
       // -------------------------
-      // PHOTO AREA
+      // PHOTO WINDOW BOUNDS (Rocket screen)
       // -------------------------
-      const PHOTO_X = 398;
-      const PHOTO_Y = 622;
-      const PROFILE_SIZE = 320;
-      const CORNER_RADIUS = 24;
+      // -------------------------
+// PHOTO POSITION
+// -------------------------
+      const PHOTO_X = 333;
+      const PHOTO_Y = 490;
+      const PHOTO_WIDTH = 324;
+      const PHOTO_HEIGHT = 324;
+      const CORNER_RADIUS = 28;
+
 
       // -------------------------
-      // TEXT POSITION
+      // TEXT POSITIONS
       // -------------------------
-      const CENTER_X = PHOTO_X + PROFILE_SIZE / 2;
-      const NAME_Y = PHOTO_Y + PROFILE_SIZE + 15;
-      const ROLE_Y = NAME_Y + 40;
+      const NAME_X = 465;
+      const NAME_Y = 910;
+
+      const WORK_X = 465;
+      const WORK_Y = 1020;
 
       const imgTemplate = new Image();
       const imgUser = new Image();
@@ -33,45 +40,44 @@ export const generateTicketCanvas = async (name, role, photoFile) => {
         canvas.width = imgTemplate.width;
         canvas.height = imgTemplate.height;
 
-        // Draw template
+        // Draw background template
         ctx.drawImage(imgTemplate, 0, 0);
 
         const reader = new FileReader();
 
         reader.onload = (event) => {
           imgUser.onload = () => {
-
             // -------------------------
-            // Draw Uploaded Photo
+            // Draw Uploaded Photo Inside Rocket Window
             // -------------------------
-
             ctx.save();
 
             ctx.beginPath();
-            ctx.roundRect(
-              PHOTO_X,
-              PHOTO_Y,
-              PROFILE_SIZE,
-              PROFILE_SIZE,
-              CORNER_RADIUS
-            );
+            if (ctx.roundRect) {
+              ctx.roundRect(
+                PHOTO_X,
+                PHOTO_Y,
+                PHOTO_WIDTH,
+                PHOTO_HEIGHT,
+                CORNER_RADIUS
+              );
+            } else {
+              ctx.rect(PHOTO_X, PHOTO_Y, PHOTO_WIDTH, PHOTO_HEIGHT);
+            }
 
             ctx.clip();
 
-            // Fit image perfectly inside frame
+            // Fit image aspect-ratio cover
             const scale = Math.max(
-              PROFILE_SIZE / imgUser.width,
-              PROFILE_SIZE / imgUser.height
+              PHOTO_WIDTH / imgUser.width,
+              PHOTO_HEIGHT / imgUser.height
             );
 
             const drawWidth = imgUser.width * scale;
             const drawHeight = imgUser.height * scale;
 
-            const drawX =
-              PHOTO_X + (PROFILE_SIZE - drawWidth) / 2;
-
-            const drawY =
-              PHOTO_Y + (PROFILE_SIZE - drawHeight) / 2;
+            const drawX = PHOTO_X + (PHOTO_WIDTH - drawWidth) / 2;
+            const drawY = PHOTO_Y + (PHOTO_HEIGHT - drawHeight) / 2;
 
             ctx.drawImage(
               imgUser,
@@ -84,33 +90,31 @@ export const generateTicketCanvas = async (name, role, photoFile) => {
             ctx.restore();
 
             // -------------------------
-            // Draw Name
+            // Draw Name (max 14 chars)
             // -------------------------
+            ctx.textAlign = "left";
+            ctx.textBaseline = "middle";
 
-            ctx.textAlign = "center";
-            ctx.textBaseline = "top";
-
-            ctx.fillStyle = "#111111";
-            ctx.font = "bold 42px Arial";
+            ctx.fillStyle = "#000000ff";
+            ctx.font = "bold 28px 'Courier New', monospace, sans-serif";
 
             ctx.fillText(
-              name.trim(),
-              CENTER_X,
+              name.trim().slice(0, 14),
+              NAME_X,
               NAME_Y
             );
 
             // -------------------------
-            // Draw Role
+            // Draw Work / Role (max 14 chars)
             // -------------------------
-
             if (role && role.trim() !== "") {
-              ctx.fillStyle = "#444444";
-              ctx.font = "bold 30px Arial";
+              ctx.fillStyle = "#000000";
+              ctx.font = "bold 28px 'Courier New', monospace, sans-serif";
 
               ctx.fillText(
-                role.trim(),
-                CENTER_X,
-                ROLE_Y
+                role.trim().slice(0, 14),
+                WORK_X,
+                WORK_Y
               );
             }
 

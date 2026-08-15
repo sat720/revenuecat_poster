@@ -1,16 +1,16 @@
 :root {
-  --primary-color: #6c63ff;
-  --secondary-color: #8e7dff;
-  --accent-yellow: #ffc933;
-  --accent-purple: #6c63ff;
-  --accent-pink: #8e7dff;
+  --primary-color: #282047;
+  --secondary-color: #ff5500;
+  --accent-yellow: #ffb800;
+  --accent-purple: #7c5cff;
+  --accent-pink: #ff4081;
 
   --text-primary: #1f2937;
-  --text-secondary: #6b7280;
+  --text-secondary: #9ca3af;
   --text-muted: #a8a5c4;
 
-  --glass-bg: rgba(255,255,255,0.85);
-  --glass-border: rgba(0,0,0,0.08);
+  --glass-bg: rgba(40, 32, 71, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.12);
 }
 
 html, body {
@@ -24,8 +24,8 @@ body {
   margin: 0;
   font-family: 'Inter', 'Poppins', sans-serif;
   color: #fff;
-  background: linear-gradient(135deg, #07070a, #14142a, #1a1a3d);
-  background-color: #07070a;
+  background: linear-gradient(135deg, #120d24, #282047, #1c1536);
+  background-color: #282047;
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
@@ -259,28 +259,26 @@ font-size: 18px;
   width: 100%;
 }
 
-/* Primary Button (Gradient Pink/Purple) */
-.btn-primary{
-
-    padding:18px;
-
-    padding:20px;
-font-size:20px;
-
-    border-radius:14px;
-
-    background:linear-gradient(
-        90deg,
-        #6c63ff,
-        #8e7dff
-    );
-    border: none;
-    color: #fff;
-    cursor: pointer;
+/* Primary Button (Gradient Orange/Purple) */
+.btn-primary {
+  padding: 18px 24px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 14px;
+  background: linear-gradient(
+    90deg,
+    #ff5500,
+    #ff7700
+  );
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 85, 0, 0.35);
+  transition: all 0.25s ease;
 }
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(108, 99, 255, 0.4);
+  box-shadow: 0 12px 28px rgba(255, 85, 0, 0.55);
 }
 
 .btn-primary:disabled {

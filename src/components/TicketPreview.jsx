@@ -1,16 +1,17 @@
 import React from "react";
 
 const TicketPreview = ({ ticketUrl, onReset }) => {
-  const shareText = `🚀 Excited to attend the Qwen Workspace Community!
+  const shareText = `🔥 Beyond thrilled to announce that I'm attending Shipathon 2026! 🚀
 
-Looking forward to connecting, learning, collaborating and networking with the amazing Qwen community.
+Get ready for an epic day of building, shipping, and conquering with the amazing tech ecosystem powered by Kramers Community x RevenueCat! 💡⚡
 
-#QwenWorkspace
-#AI
-#Qwen
-#Community
-#Hyderabad
-#DevX`;
+📅 Date: Saturday, 22nd August 2026
+⏰ Time: 1:45 PM – 6:00 PM (IST)
+📍 Venue: DevX, Hyderabad
+
+Can't wait to connect, collaborate, and innovate with fellow builders, developers, and tech enthusiasts! Who else is attending? Connect with me! 👇🎉
+
+#Shipathon2026 #BuildShipConquer #KramersCommunity #RevenueCat #DevX #Hyderabad #TechCommunity #Hackathon #Developers`;
 
   const handleDownload = async () => {
     try {
@@ -20,7 +21,7 @@ Looking forward to connecting, learning, collaborating and networking with the a
       const blobUrl = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = blobUrl;
-      link.download = "Qwen_Workspace_Attendee_Pass.png";
+      link.download = "Shipathon_2026_Attendee_Pass.png";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -33,19 +34,14 @@ Looking forward to connecting, learning, collaborating and networking with the a
 
   const handleLinkedInShare = async () => {
     try {
-      // 1. Download pass image
       await handleDownload();
-
-      // 2. Copy text caption to clipboard
       await navigator.clipboard.writeText(shareText);
 
-      // 3. Alert user: text is pre-filled/copied, attach downloaded image
       alert(`✅ Attendee pass downloaded!
 ✅ Caption copied to clipboard!
 
 LinkedIn is opening with your post text pre-filled. Simply upload the downloaded attendee pass image and post!`);
 
-      // 4. Open LinkedIn in post-creation mode
       const linkedInPostUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(
         shareText
       )}`;
@@ -58,19 +54,14 @@ LinkedIn is opening with your post text pre-filled. Simply upload the downloaded
 
   const handleInstagramShare = async () => {
     try {
-      // 1. Download pass image
       await handleDownload();
-
-      // 2. Copy text caption to clipboard
       await navigator.clipboard.writeText(shareText);
 
-      // 3. Alert user: caption copied to paste when creating post + upload downloaded image
       alert(`✅ Attendee pass downloaded!
 ✅ Caption copied to clipboard!
 
 Opening Instagram — simply create a new post, upload your downloaded pass image, and paste the copied caption!`);
 
-      // 4. Open Instagram
       window.open("https://www.instagram.com/", "_blank");
     } catch (err) {
       console.error(err);
@@ -79,24 +70,28 @@ Opening Instagram — simply create a new post, upload your downloaded pass imag
 
   const handleTwitterShare = async () => {
     try {
-      // 1. Download pass image
       await handleDownload();
-
-      // 2. Copy text caption to clipboard
       await navigator.clipboard.writeText(shareText);
 
-      // 3. Alert user: text is pre-filled/copied, attach downloaded image
       alert(`✅ Attendee pass downloaded!
 ✅ Caption copied to clipboard!
 
 X (Twitter) is opening with your post text pre-filled. Simply attach your downloaded attendee pass image and post!`);
 
-      // 4. Open Twitter/X direct post composition
       const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
         shareText
       )}`;
 
       window.open(twitterUrl, "_blank");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleCopyCaption = async () => {
+    try {
+      await navigator.clipboard.writeText(shareText);
+      alert("✅ Caption text copied to clipboard!");
     } catch (err) {
       console.error(err);
     }
@@ -152,9 +147,44 @@ X (Twitter) is opening with your post text pre-filled. Simply attach your downlo
         </button>
       </div>
 
+      {/* Caption Preview Box */}
       <div
         style={{
-          marginTop: "30px",
+          marginTop: "25px",
+          width: "100%",
+          maxWidth: "500px",
+          padding: "18px",
+          borderRadius: "14px",
+          background: "rgba(255,255,255,.05)",
+          border: "1px solid rgba(255,255,255,.1)",
+          textAlign: "left",
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
+          <h4 style={{ margin: 0, color: "#ff7700" }}>📝 Post Caption</h4>
+          <button
+            onClick={handleCopyCaption}
+            style={{
+              background: "rgba(255, 119, 0, 0.2)",
+              border: "1px solid #ff7700",
+              color: "#fff",
+              padding: "4px 10px",
+              borderRadius: "6px",
+              cursor: "pointer",
+              fontSize: "12px",
+            }}
+          >
+            Copy Text
+          </button>
+        </div>
+        <p style={{ fontSize: "13px", lineHeight: "1.6", color: "#e2e8f0", margin: 0, whiteSpace: "pre-line" }}>
+          {shareText}
+        </p>
+      </div>
+
+      <div
+        style={{
+          marginTop: "20px",
           width: "100%",
           maxWidth: "500px",
           padding: "20px",
@@ -162,15 +192,15 @@ X (Twitter) is opening with your post text pre-filled. Simply attach your downlo
           background: "rgba(255,255,255,.08)",
         }}
       >
-        <h3 style={{ color: "#7c5cff" }}>
+        <h3 style={{ color: "#ff7700" }}>
           What's Next?
         </h3>
 
         <ul style={{ lineHeight: "2" }}>
           <li>Download your attendee pass.</li>
           <li>Share it on LinkedIn, Instagram or X.</li>
-          <li>Tag the Qwen community.</li>
-          <li>See you at the event! 🎉</li>
+          <li>Tag Kramers Community & RevenueCat.</li>
+          <li>See you at Shipathon 2026! 🎉</li>
         </ul>
       </div>
 

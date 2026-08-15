@@ -44,10 +44,10 @@ function App() {
 
       <div className="hero-section">
         <img
-          src="/images/qwen-title.jpeg"
-          alt="Qwen Workspace"
+          src="/images/shipaton-2026-logo.webp"
+          alt="Shipathon 2026 Logo"
           style={{
-            width: "100px",
+            width: "180px",
             height: "auto",
             display: "block",
             margin: "0 auto 10px",
@@ -56,19 +56,20 @@ function App() {
 
         <h2
           style={{
-            fontSize: "24px",
-            fontWeight: "700",
+            fontSize: "28px",
+            fontWeight: "800",
             color: "#ffffff",
             textAlign: "center",
             margin: "5px 0",
+            letterSpacing: "1px",
           }}
         >
-          Community
+          Shipathon 2026
         </h2>
 
         <p
           style={{
-            fontSize: "15px",
+            fontSize: "16px",
             maxWidth: "550px",
             margin: "0 auto 20px",
             textAlign: "center",
@@ -76,16 +77,17 @@ function App() {
             lineHeight: "1.6",
           }}
         >
-          Upload your photo and generate your personalized
-          <strong> Qwen Workspace </strong>
+          ✨ <strong>Build. Ship. Conquer.</strong> ✨<br />
+          Upload your photo & work to generate your official
+          <strong> Shipathon 2026 </strong>
           attendee pass.
         </p>
       </div>
 
       <main className="glass-card">
         <img
-          src="/images/qwen-coder-bear.jpeg"
-          alt="Qwen Bear"
+          src="/images/shippy-space-computer.webp"
+          alt="Shippy Space Astronaut"
           className="hero-bear"
         />
 

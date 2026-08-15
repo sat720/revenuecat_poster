@@ -1,7 +1,7 @@
 import React from "react";
 
 const TicketPreview = ({ ticketUrl, onReset }) => {
-  const shareText = `🚀 Exccited to attend the Qwen Workspace Community!
+  const shareText = `🚀 Excited to attend the Qwen Workspace Community!
 
 Looking forward to connecting, learning, collaborating and networking with the amazing Qwen community.
 
@@ -16,18 +16,6 @@ Looking forward to connecting, learning, collaborating and networking with the a
     try {
       const response = await fetch(ticketUrl);
       const blob = await response.blob();
-
-      // On mobile, the native share sheet is the most reliable way to save
-      // an image (many mobile browsers ignore the `download` attribute).
-      if (navigator.canShare && navigator.canShare({ files: [new File([blob], "pass.png", { type: "image/png" })] })) {
-        const file = new File([blob], "Qwen_Workspace_Attendee_Pass.png", { type: "image/png" });
-        try {
-          await navigator.share({ files: [file] });
-          return;
-        } catch (shareErr) {
-          // user cancelled the share sheet or share failed — fall back to normal download below
-        }
-      }
 
       const blobUrl = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
@@ -45,20 +33,20 @@ Looking forward to connecting, learning, collaborating and networking with the a
 
   const handleLinkedInShare = async () => {
     try {
-      handleDownload();
+      // 1. Download pass image
+      await handleDownload();
 
+      // 2. Copy text caption to clipboard
       await navigator.clipboard.writeText(shareText);
 
+      // 3. Open LinkedIn directly in post-creation mode with pre-filled text
+      const linkedInPostUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(
+        shareText
+      )}`;
+
       setTimeout(() => {
-        window.open("https://www.linkedin.com/feed/", "_blank");
-
-        alert(`✅ Attendee pass downloaded!
-
-✅ Caption copied!
-
-Open LinkedIn and create a new post.
-Upload the attendee pass and paste the copied caption.`);
-      }, 500);
+        window.open(linkedInPostUrl, "_blank");
+      }, 300);
     } catch (err) {
       console.error(err);
     }
@@ -66,30 +54,43 @@ Upload the attendee pass and paste the copied caption.`);
 
   const handleInstagramShare = async () => {
     try {
-      handleDownload();
+      // 1. Download pass image
+      await handleDownload();
 
+      // 2. Copy text caption to clipboard
       await navigator.clipboard.writeText(shareText);
 
+      // 3. Directly open Instagram app / creation screen
       setTimeout(() => {
-        window.open("https://www.instagram.com/", "_blank");
-
-        alert(`✅ Attendee pass downloaded!
-
-✅ Caption copied!
-
-Open Instagram and upload your attendee pass.`);
-      }, 500);
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (isMobile) {
+          window.location.href = "instagram://camera";
+          setTimeout(() => {
+            window.open("https://www.instagram.com/", "_blank");
+          }, 1000);
+        } else {
+          window.open("https://www.instagram.com/", "_blank");
+        }
+      }, 300);
     } catch (err) {
       console.error(err);
     }
   };
 
-  const handleTwitterShare = () => {
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-      shareText
-    )}`;
+  const handleTwitterShare = async () => {
+    try {
+      // 1. Download pass image
+      await handleDownload();
 
-    window.open(twitterUrl, "_blank");
+      // 2. Open Twitter/X direct post composition
+      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        shareText
+      )}`;
+
+      window.open(twitterUrl, "_blank");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

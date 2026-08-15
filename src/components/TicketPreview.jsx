@@ -1,7 +1,7 @@
 import React from "react";
 
 const TicketPreview = ({ ticketUrl, onReset }) => {
-  const shareText = `🚀 Excited to attend the Qwen Workspace Community!
+  const shareText = `🚀 Exccited to attend the Qwen Workspace Community!
 
 Looking forward to connecting, learning, collaborating and networking with the amazing Qwen community.
 

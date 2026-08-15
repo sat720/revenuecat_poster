@@ -13,6 +13,17 @@ Can't wait to connect, collaborate, and innovate with fellow builders, developer
 
 #Shipathon2026 #BuildShipConquer #KramersCommunity #RevenueCat #DevX #Hyderabad #TechCommunity #Hackathon #Developers`;
 
+  // X / Twitter strict 280-character limit share text
+  const twitterShareText = `🚀 Excited to attend Shipathon 2026! 
+
+Building, shipping & conquering with Kramers Community x RevenueCat! 💡
+
+📅 Sat, 22 Aug 2026 | 📍 DevX, Hyderabad
+
+See you there! 🎉
+
+#Shipathon2026 #BuildShipConquer #KramersCommunity #RevenueCat #DevX #Hyderabad`;
+
   const handleDownload = async () => {
     try {
       const response = await fetch(ticketUrl);
@@ -71,15 +82,15 @@ Opening Instagram — simply create a new post, upload your downloaded pass imag
   const handleTwitterShare = async () => {
     try {
       await handleDownload();
-      await navigator.clipboard.writeText(shareText);
+      await navigator.clipboard.writeText(twitterShareText);
 
       alert(`✅ Attendee pass downloaded!
-✅ Caption copied to clipboard!
+✅ X (Twitter) caption copied to clipboard!
 
-X (Twitter) is opening with your post text pre-filled. Simply attach your downloaded attendee pass image and post!`);
+X is opening with your tweet text pre-filled. Simply attach your downloaded pass image and post!`);
 
       const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-        shareText
+        twitterShareText
       )}`;
 
       window.open(twitterUrl, "_blank");

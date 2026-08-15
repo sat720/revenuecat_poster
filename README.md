@@ -1,48 +1,69 @@
-# 🟣 Qwen Workspace
+# 🚀 Shipathon 2026 — Attendee Pass Generator
 
-A web-based project for the **Qwen Workspace** community watch party, built to simplify attendee registration and personalized pass generation. The application provides a clean, responsive interface for users to upload a photo and receive a personalized attendee pass.
+A web application for the **Shipathon 2026** hackathon & community event (*Build. Ship. Conquer.*) in collaboration with **Kramers Community** and **RevenueCat**. Built to simplify attendee registration, photo upload, and instant client-side attendee pass generation.
+
+---
 
 ## ✨ Features
 
-- 🎟️ Event attendee pass generation
-- 📝 Simple registration form (name, role, photo)
-- 📱 Responsive design
-- ⚡ Fast, client-side pass generation (no backend required)
-- 🎨 Modern glassmorphism UI with Qwen purple theme
+- 🎟️ **Instant Attendee Pass Generation**: Renders a high-resolution pixel art rocket pass (1024 × 1536) on HTML5 Canvas.
+- 📝 **Simple Registration Form**: Name and designation input with strict 14-character formatting.
+- 📱 **Responsive Glassmorphism UI**: Dark space-theme interface (`#282047`) with rocket gradient accents.
+- ⚡ **Client-Side Processing**: Fast rendering with zero backend overhead.
+- 📲 **1-Click Social Sharing**: Direct sharing & caption auto-copy for LinkedIn, Instagram, and X (Twitter).
+
+---
 
 ## 🛠️ Tech Stack
 
-- React + Vite
-- HTML5 Canvas
-- CSS3 (glassmorphism, custom properties)
+- **Framework**: React + Vite
+- **Canvas Rendering**: HTML5 Canvas 2D API
+- **Styling**: Vanilla CSS3 (Glassmorphism, CSS Custom Properties, Responsive Flexbox)
+
+---
 
 ## 📂 Project Structure
 
 ```
-qwen-workspace/
+Qwen-Workspace1/
 │── public/
-│   ├── images/          # Qwen branding assets
-│   └── template.png      # Attendee pass template
+│   ├── images/                # Shipathon 2026 logo & mascot assets
+│   └── template.png            # Shipathon 2026 rocket poster template (1024x1536)
 │── src/
-│   ├── components/       # InputForm, Loader, TicketPreview
-│   ├── utils/             # ticketGenerator.js (canvas logic)
-│   ├── App.jsx
-│   └── index.css
+│   ├── components/
+│   │   ├── InputForm.jsx       # Photo upload & details form (14 char limit)
+│   │   ├── Loader.jsx          # Pass generation loading indicator
+│   │   └── TicketPreview.jsx   # Pass preview & social sharing handlers
+│   ├── utils/
+│   │   └── ticketGenerator.js  # HTML5 Canvas rendering & coordinate mapping
+│   ├── App.jsx                 # Hero section & state management
+│   ├── App.css
+│   └── index.css               # Design system tokens (#282047 space theme)
 │── index.html
-│── package.json
+└── package.json
 ```
 
-## 🎯 Purpose
+---
 
-This project was created to provide a simple, user-friendly digital pass generation experience for Qwen Workspace community event attendees.
+## 🎯 Event Details
 
-## 👩‍💻 Author
+- **Event**: Shipathon 2026 (*Build. Ship. Conquer.*)
+- **Collaborators**: Kramers Community × RevenueCat
+- **Date**: Saturday, 22nd August 2026
+- **Time**: 1:45 PM – 6:00 PM (IST)
+- **Venue**: DevX, Hyderabad
 
-**Madhuri Baja**
+---
 
-- GitHub: https://github.com/madhurib4555-glitch
-- LinkedIn: https://www.linkedin.com/in/madhuri-baja-140294371/
+## 👨‍💻 Author
+
+**Satvik Kolluru**
+
+- **GitHub**: [sat720](https://github.com/sat720/)
+- **LinkedIn**: [Satvik Kolluru](https://www.linkedin.com/in/satvik-kolluru-02548a208)
+
+---
 
 ## ⭐ Support
 
-If you found this project helpful, consider giving it a ⭐ on GitHub.
+If you found this project helpful, consider giving it a ⭐ on GitHub!

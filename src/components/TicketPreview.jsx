@@ -39,14 +39,18 @@ Looking forward to connecting, learning, collaborating and networking with the a
       // 2. Copy text caption to clipboard
       await navigator.clipboard.writeText(shareText);
 
-      // 3. Open LinkedIn directly in post-creation mode with pre-filled text
+      // 3. Alert user: text is pre-filled/copied, attach downloaded image
+      alert(`✅ Attendee pass downloaded!
+✅ Caption copied to clipboard!
+
+LinkedIn is opening with your post text pre-filled. Simply upload the downloaded attendee pass image and post!`);
+
+      // 4. Open LinkedIn in post-creation mode
       const linkedInPostUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(
         shareText
       )}`;
 
-      setTimeout(() => {
-        window.open(linkedInPostUrl, "_blank");
-      }, 300);
+      window.open(linkedInPostUrl, "_blank");
     } catch (err) {
       console.error(err);
     }
@@ -54,33 +58,19 @@ Looking forward to connecting, learning, collaborating and networking with the a
 
   const handleInstagramShare = async () => {
     try {
-      const response = await fetch(ticketUrl);
-      const blob = await response.blob();
-      const file = new File([blob], "Qwen_Workspace_Attendee_Pass.png", { type: "image/png" });
-
-      // Always copy caption text to clipboard
-      try {
-        await navigator.clipboard.writeText(shareText);
-      } catch (clipErr) {
-        console.error("Clipboard copy failed", clipErr);
-      }
-
-      // On Mobile devices, Web Share API passes the image directly into Instagram's post creation flow!
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        try {
-          await navigator.share({
-            title: "Qwen Workspace Attendee Pass",
-            text: shareText,
-            files: [file],
-          });
-          return;
-        } catch (shareErr) {
-          if (shareErr.name === "AbortError") return; // User closed share sheet
-        }
-      }
-
-      // Desktop fallback: Download pass & open Instagram
+      // 1. Download pass image
       await handleDownload();
+
+      // 2. Copy text caption to clipboard
+      await navigator.clipboard.writeText(shareText);
+
+      // 3. Alert user: caption copied to paste when creating post + upload downloaded image
+      alert(`✅ Attendee pass downloaded!
+✅ Caption copied to clipboard!
+
+Opening Instagram — simply create a new post, upload your downloaded pass image, and paste the copied caption!`);
+
+      // 4. Open Instagram
       window.open("https://www.instagram.com/", "_blank");
     } catch (err) {
       console.error(err);
@@ -92,7 +82,16 @@ Looking forward to connecting, learning, collaborating and networking with the a
       // 1. Download pass image
       await handleDownload();
 
-      // 2. Open Twitter/X direct post composition
+      // 2. Copy text caption to clipboard
+      await navigator.clipboard.writeText(shareText);
+
+      // 3. Alert user: text is pre-filled/copied, attach downloaded image
+      alert(`✅ Attendee pass downloaded!
+✅ Caption copied to clipboard!
+
+X (Twitter) is opening with your post text pre-filled. Simply attach your downloaded attendee pass image and post!`);
+
+      // 4. Open Twitter/X direct post composition
       const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
         shareText
       )}`;

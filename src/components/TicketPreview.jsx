@@ -54,24 +54,34 @@ Looking forward to connecting, learning, collaborating and networking with the a
 
   const handleInstagramShare = async () => {
     try {
-      // 1. Download pass image
-      await handleDownload();
+      const response = await fetch(ticketUrl);
+      const blob = await response.blob();
+      const file = new File([blob], "Qwen_Workspace_Attendee_Pass.png", { type: "image/png" });
 
-      // 2. Copy text caption to clipboard
-      await navigator.clipboard.writeText(shareText);
+      // Always copy caption text to clipboard
+      try {
+        await navigator.clipboard.writeText(shareText);
+      } catch (clipErr) {
+        console.error("Clipboard copy failed", clipErr);
+      }
 
-      // 3. Directly open Instagram app / creation screen
-      setTimeout(() => {
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        if (isMobile) {
-          window.location.href = "instagram://camera";
-          setTimeout(() => {
-            window.open("https://www.instagram.com/", "_blank");
-          }, 1000);
-        } else {
-          window.open("https://www.instagram.com/", "_blank");
+      // On Mobile devices, Web Share API passes the image directly into Instagram's post creation flow!
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({
+            title: "Qwen Workspace Attendee Pass",
+            text: shareText,
+            files: [file],
+          });
+          return;
+        } catch (shareErr) {
+          if (shareErr.name === "AbortError") return; // User closed share sheet
         }
-      }, 300);
+      }
+
+      // Desktop fallback: Download pass & open Instagram
+      await handleDownload();
+      window.open("https://www.instagram.com/", "_blank");
     } catch (err) {
       console.error(err);
     }

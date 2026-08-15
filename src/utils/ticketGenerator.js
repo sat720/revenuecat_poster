@@ -12,26 +12,26 @@ export const generateTicketCanvas = async (name, role, photoFile) => {
       const TEMPLATE_URL = "/template.png";
 
       // -------------------------
-      // PHOTO WINDOW BOUNDS (Rocket screen)
+      // PHOTO WINDOW BOUNDS (Positioned inside rocket window)
       // -------------------------
-      // -------------------------
-// PHOTO POSITION
-// -------------------------
-      const PHOTO_X = 333;
-      const PHOTO_Y = 490;
-      const PHOTO_WIDTH = 324;
-      const PHOTO_HEIGHT = 324;
+      const PHOTO_X = 326;
+      const PHOTO_Y = 514;
+      const PHOTO_WIDTH = 344;
+      const PHOTO_HEIGHT = 344;
       const CORNER_RADIUS = 28;
 
-
       // -------------------------
-      // TEXT POSITIONS
+      // TEXT POSITIONS (Middle-aligned on rocket lines)
       // -------------------------
-      const NAME_X = 465;
-      const NAME_Y = 910;
+      const lefttext = 294;
+      const righttext = 685;
+      const CENTER_X = (lefttext + righttext) / 2;
 
-      const WORK_X = 465;
-      const WORK_Y = 1020;
+      const NAME_X = CENTER_X;
+      const NAME_Y = 945;
+
+      const WORK_X = CENTER_X;
+      const WORK_Y = 995;
 
       const imgTemplate = new Image();
       const imgUser = new Image();
@@ -90,29 +90,29 @@ export const generateTicketCanvas = async (name, role, photoFile) => {
             ctx.restore();
 
             // -------------------------
-            // Draw Name (max 14 chars)
+            // Draw Name (middle-aligned, max 20 chars)
             // -------------------------
-            ctx.textAlign = "left";
+            ctx.textAlign = "center";
             ctx.textBaseline = "middle";
 
-            ctx.fillStyle = "#000000ff";
-            ctx.font = "bold 28px 'Courier New', monospace, sans-serif";
+            ctx.fillStyle = "#000000";
+            ctx.font = "bold 35px 'Courier New', monospace, sans-serif";
 
             ctx.fillText(
-              name.trim().slice(0, 14),
+              name.trim().slice(0, 20),
               NAME_X,
               NAME_Y
             );
 
             // -------------------------
-            // Draw Work / Role (max 14 chars)
+            // Draw Work / Role (middle-aligned, max 20 chars)
             // -------------------------
             if (role && role.trim() !== "") {
               ctx.fillStyle = "#000000";
-              ctx.font = "bold 28px 'Courier New', monospace, sans-serif";
+              ctx.font = "bold 35px 'Courier New', monospace, sans-serif";
 
               ctx.fillText(
-                role.trim().slice(0, 14),
+                role.trim().slice(0, 20),
                 WORK_X,
                 WORK_Y
               );

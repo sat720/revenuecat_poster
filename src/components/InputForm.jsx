@@ -113,14 +113,14 @@ const InputForm = ({ onSubmit }) => {
 
       {/* Name */}
       <div className="form-group">
-        <label>Name (Max 14 chars)</label>
+        <label>Name (Max 20 chars)</label>
 
         <input
           className="form-input"
           type="text"
           placeholder="Enter your name"
           value={name}
-          maxLength={14}
+          maxLength={20}
           onChange={(e) => setName(e.target.value)}
           required
         />
@@ -128,14 +128,14 @@ const InputForm = ({ onSubmit }) => {
 
       {/* Role */}
       <div className="form-group">
-        <label>Company / Designation (Optional, Max 14 chars)</label>
+        <label>Company / Designation (Optional, Max 20 chars)</label>
 
         <input
           className="form-input"
           type="text"
           placeholder="e.g. AI Engineer"
           value={role}
-          maxLength={14}
+          maxLength={20}
           onChange={(e) => setRole(e.target.value)}
         />
       </div>

@@ -1,6 +1,6 @@
 
 ## ✨ Features
-
+ 
 - 🎟️ **Instant Attendee Pass Generation**: Renders a high-resolution pixel art rocket pass (1024 × 1536) on HTML5 Canvas.
 - 📝 **Simple Registration Form**: Name and designation input with strict 14-character formatting.
 - 📱 **Responsive Glassmorphism UI**: Dark space-theme interface (`#282047`) with rocket gradient accents.

@@ -1,8 +1,3 @@
-# 🚀 Shipathon 2026 — Attendee Pass Generator
-
-A web application for the **Shipathon 2026** hackathon & community event (*Build. Ship. Conquer.*) in collaboration with **Kramers Community** and **RevenueCat**. Built to simplify attendee registration, photo upload, and instant client-side attendee pass generation.
-
----
 
 ## ✨ Features
 
@@ -41,29 +36,10 @@ Qwen-Workspace1/
 │   └── index.css               # Design system tokens (#282047 space theme)
 │── index.html
 └── package.json
-```
-
----
-
-## 🎯 Event Details
-
-- **Event**: Shipathon 2026 (*Build. Ship. Conquer.*)
-- **Collaborators**: Kramers Community × RevenueCat
-- **Date**: Saturday, 22nd August 2026
-- **Time**: 1:45 PM – 6:00 PM (IST)
-- **Venue**: DevX, Hyderabad
-
----
 
 ## 👨‍💻 Author
 
 **Satvik Kolluru**
-
 - **GitHub**: [sat720](https://github.com/sat720/)
 - **LinkedIn**: [Satvik Kolluru](https://www.linkedin.com/in/satvik-kolluru-02548a208)
-- **Vercel Link**: (https://revenuecat-poster.vercel.app/)
 ---
-
-## ⭐ Support
-
-If you found this project helpful, consider giving it a ⭐ on GitHub!
